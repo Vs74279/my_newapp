@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import NewsItem from './NewsItem';
 
+
 export default class News extends Component {
+ 
   constructor() {
     super();
     console.log("Hello i am a vikash from vikashnews");
@@ -9,6 +11,7 @@ export default class News extends Component {
       articles: [],
       loading: false,
       page: 1
+      
     };
   }
 
@@ -57,12 +60,14 @@ export default class News extends Component {
   render() {
     return (
       <div className='container my-3'>
-        <h1>VikashNews - Top Headline</h1>
+        <h1 className='text-center'>VikashNews - Top Headline</h1>
+        <hr/>
+        
         <div className='row'>
           {this.state.articles.map((element) => {
             return (
               <div className='col-md-4' key={element.url}>
-                <NewsItem title={element.title ? element.title.slice(0, 50) : ""} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage} newsUrl={element.url} />
+                <NewsItem title={element.title ? element.title.slice(0, 50) : ""} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} />
               </div>
             );
           })}
